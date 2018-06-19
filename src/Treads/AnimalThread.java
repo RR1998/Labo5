@@ -32,36 +32,43 @@ public class AnimalThread extends Thread {
         for (int i = x; i < this.Limite ; i += 10){
             System.out.println(this.Nombre+ " avanza");
             this.animal.setLocation(i,y);
-            if (this.Nombre == "tortuga"){
-                try {
-                    sleep(100);
-                }
-                catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-            }
-            else{
-                try{
-                    sleep(500);
-                }
-                catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-            }
+            CarreraAnimales();
         }
         for (int i = this.Limite -1; i > this.Limite - (this.Limite+1); i -= 10){
             System.out.println(this.Nombre+" Viene de regreso alv");
             this.animal.setLocation(i,y);
-            try{
+            CarreraAnimales();
+        }
+        yield();
+        System.out.println(this.Nombre+" a llegado a la meta");
+
+    }
+
+    private void CarreraAnimales() {
+        if (this.Nombre == "Tortuga"){
+            try {
+                sleep(500);
+            }
+            catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+        if (this.Nombre == "Dragon"){
+            try {
                 sleep(100);
             }
             catch (InterruptedException e){
                 e.printStackTrace();
             }
         }
-        yield();
-        System.out.println(this.Nombre+" a llegado a la meta");
-
+        else{
+            try{
+                sleep(300);
+            }
+            catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
     }
-    
+
 }
